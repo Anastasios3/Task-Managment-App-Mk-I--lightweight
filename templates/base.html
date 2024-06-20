@@ -19,7 +19,15 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{{ url_for('home') }}">Task Manager</a>
+      <a class="navbar-brand" href="{{ url_for('main.home') }}">
+        <img
+          src="{{ url_for('static', filename='logo.svg') }}"
+          alt="Task Manager Logo"
+          width="30"
+          height="30"
+        />
+        Task Manager
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -35,78 +43,78 @@
         <ul class="navbar-nav ml-auto">
           {% if current_user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('tasks') }}">Tasks</a>
+            <a class="nav-link" href="{{ url_for('task.tasks') }}">Tasks</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+            <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+            <a class="nav-link" href="{{ url_for('auth.register') }}"
+              >Register</a
+            >
           </li>
           {% endif %}
         </ul>
       </div>
     </nav>
-    <div class="container-fluid">
-      <div class="row">
-        {% if current_user.is_authenticated %}
-        <nav
-          id="sidebar"
-          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+    <div class="wrapper">
+      {% if current_user.is_authenticated %}
+      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+        <div class="sidebar-sticky pt-3">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="#"
+                data-toggle="modal"
+                data-target="#createTaskModal"
+                >Create Task</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('task.tasks', priority='Low') }}"
+                >Low Priority</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('task.tasks', priority='Normal') }}"
+                >Medium Priority</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="{{ url_for('task.tasks', priority='High') }}"
+                >High Priority</a
+              >
+            </li>
+            <li class="nav-item mt-auto">
+              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      {% endif %}
+      <main
+        id="main-content"
+        role="main"
+        class="col-md-9 ml-sm-auto col-lg-10 px-md-4"
+      >
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
         >
-          <div class="sidebar-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="#"
-                  data-toggle="modal"
-                  data-target="#createTaskModal"
-                >
-                  Create Task
-                </a>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{{ url_for('tasks', priority='Low') }}"
-                  >Low Priority</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{{ url_for('tasks', priority='Normal') }}"
-                  >Medium Priority</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{{ url_for('tasks', priority='High') }}"
-                  >High Priority</a
-                >
-              </li>
-              <li class="nav-item mt-auto">
-                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        {% endif %}
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-          <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-          >
-            <h1 class="h2">Dashboard</h1>
-          </div>
-          {% block content %}{% endblock %}
-        </main>
-      </div>
+          <h1 class="h2">Dashboard</h1>
+        </div>
+        {% block content %}{% endblock %}
+      </main>
     </div>
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container">
@@ -137,7 +145,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form method="POST" action="{{ url_for('tasks') }}">
+          <form method="POST" action="{{ url_for('task.tasks') }}">
             {{ form.hidden_tag() }}
             <div class="modal-body">
               <div class="form-group">
@@ -172,5 +180,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

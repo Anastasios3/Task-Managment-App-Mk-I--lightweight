@@ -1,0 +1,6 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="30" cy="30" r="20" fill="#f25022"/> <!-- Top left circle -->
+  <circle cx="90" cy="30" r="20" fill="#7fba00"/> <!-- Top right circle -->
+  <circle cx="30" cy="90" r="20" fill="#00a4ef"/> <!-- Bottom left circle -->
+  <circle cx="90" cy="90" r="20" fill="#ffb900"/> <!-- Bottom right circle -->
+</svg>
