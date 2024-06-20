@@ -35,6 +35,13 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button
+        class="navbar-toggler"
+        type="button"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <a class="navbar-brand" href="{{ url_for('task.tasks') }}">
         <img
           src="{{ url_for('static', filename='logo.svg') }}"
@@ -45,72 +52,19 @@
         Task Manager
       </a>
     </nav>
-    <div class="wrapper">
+    <div class="wrapper d-flex">
       {% if current_user.is_authenticated %}
-      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="sidebar-sticky pt-3 d-flex flex-column h-100">
-          <ul class="nav flex-column">
-            <li class="nav-item text-center mb-3">
-              <a
-                class="btn btn-primary create-task-btn"
-                href="#"
-                data-toggle="modal"
-                data-target="#createTaskModal"
-              >
-                <strong>+</strong> CREATE TASK
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='Low') }}"
-                >Low Priority</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='Normal') }}"
-                >Medium Priority</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='High') }}"
-                >High Priority</a
-              >
-            </li>
-          </ul>
-          <div class="mt-auto text-center mb-3">
-            <a
-              class="btn btn-danger logout-btn"
-              href="{{ url_for('auth.logout') }}"
-            >
-              <span>LOGOUT</span>
-            </a>
-          </div>
-        </div>
-      </nav>
+      <div id="sidebar" class="bg-light">{% include 'sidebar.html' %}</div>
       {% endif %}
-      <main
-        id="main-content"
-        role="main"
-        class="col-md-9 ml-sm-auto col-lg-10 px-md-4"
-      >
+      <main id="main-content" class="flex-grow-1">
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
         >
           <h1 class="h2">Dashboard</h1>
         </div>
-        {% block content %}{% endblock %}
+        {% block content %}{% endblock %} {% include 'footer.html' %}
       </main>
     </div>
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
 
     {% if form.__class__.__name__ == 'TaskForm' %}
     <!-- Create Task Modal -->

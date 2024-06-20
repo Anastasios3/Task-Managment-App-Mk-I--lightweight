@@ -1,10 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
+  const toggleButton = document.querySelector(".navbar-toggler");
   const sidebar = document.getElementById("sidebar");
-  const mainContent = document.getElementById("main-content");
-  const navbarToggler = document.querySelector(".navbar-toggler");
 
-  navbarToggler.addEventListener("click", function () {
-    sidebar.classList.toggle("collapsed");
-    mainContent.classList.toggle("collapsed");
+  toggleButton.addEventListener("click", function () {
+    sidebar.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function (event) {
+    if (
+      !sidebar.contains(event.target) &&
+      !toggleButton.contains(event.target)
+    ) {
+      sidebar.classList.remove("show");
+    }
   });
 });

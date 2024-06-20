@@ -1,9 +1,12 @@
-/* Sidebar styling */
 #sidebar {
+  height: 100vh;
+  position: fixed;
   width: 20%;
-  min-height: 100vh;
   background-color: #f8f9fa;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
   transition: transform 0.3s ease;
 }
 
@@ -15,10 +18,6 @@
 #sidebar .nav-link:hover {
   background-color: #ddd;
   border-radius: 0.5rem;
-}
-
-#sidebar.collapsed {
-  transform: translateX(-100%);
 }
 
 .create-task-btn {
@@ -57,6 +56,7 @@
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
+  margin-bottom: 4rem;
 }
 
 .logout-btn:hover {
@@ -65,4 +65,30 @@
 
 .logout-btn span {
   margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 1000;
+    width: 75%;
+    height: 100%;
+  }
+
+  #sidebar.show {
+    transform: translateX(0);
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  #main-content {
+    margin-left: 0;
+  }
 }

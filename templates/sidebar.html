@@ -1,38 +1,34 @@
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-  <div class="sidebar-sticky pt-3 d-flex flex-column h-100">
-    <ul class="nav flex-column">
-      <li class="nav-item text-center mb-3">
-        <a
-          class="btn btn-primary create-task-btn"
-          href="#"
-          data-toggle="modal"
-          data-target="#createTaskModal"
-        >
-          <strong>+</strong> CREATE TASK
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('task.tasks', priority='Low') }}"
-          >Low Priority</a
-        >
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          href="{{ url_for('task.tasks', priority='Normal') }}"
-          >Medium Priority</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('task.tasks', priority='High') }}"
-          >High Priority</a
-        >
-      </li>
-    </ul>
-    <div class="mt-auto text-center mb-3">
-      <a class="btn btn-danger logout-btn" href="{{ url_for('auth.logout') }}">
-        <span>LOGOUT</span>
+<div class="sidebar-sticky d-flex flex-column h-100">
+  <ul class="nav flex-column flex-grow-1">
+    <li class="nav-item text-center mb-3">
+      <a
+        class="btn btn-primary create-task-btn"
+        href="#"
+        data-toggle="modal"
+        data-target="#createTaskModal"
+      >
+        <strong>+</strong> CREATE TASK
       </a>
-    </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('task.tasks', priority='Low') }}"
+        >Low Priority</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('task.tasks', priority='Normal') }}"
+        >Medium Priority</a
+      >
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ url_for('task.tasks', priority='High') }}"
+        >High Priority</a
+      >
+    </li>
+  </ul>
+  <div class="text-center mb-3 mt-auto">
+    <a class="btn btn-danger logout-btn" href="{{ url_for('auth.logout') }}">
+      <span>LOGOUT</span>
+    </a>
   </div>
-</nav>
+</div>

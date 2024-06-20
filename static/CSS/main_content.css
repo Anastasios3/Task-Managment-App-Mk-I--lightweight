@@ -3,14 +3,21 @@
   flex: 1;
   padding: 2rem;
   transition: margin-left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%; /* Adjusted for sidebar width */
+  min-height: calc(100vh - 60px); /* Adjust for navbar height */
 }
 
-#main-content.collapsed {
-  margin-left: 0;
+@media (max-width: 768px) {
+  #main-content {
+    margin-left: 0;
+  }
 }
 
 .container-fluid {
   padding-top: 1rem;
+  flex: 1;
 }
 
 /* Form styling */
