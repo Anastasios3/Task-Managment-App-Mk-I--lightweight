@@ -82,3 +82,16 @@ def delete_task(task_id):
     db.session.commit()
     flash('Task deleted!', 'success')
     return redirect(url_for('task.tasks'))
+
+@task_routes.route('/complete_task/<int:task_id>', methods=['POST'])
+@login_required
+def complete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if task.owner != current_user:
+        flash('You do not have permission to complete this task.', 'danger')
+        return redirect(url_for('task.tasks'))
+
+    task.completed = True
+    db.session.commit()
+    flash('Task marked as complete!', 'success')
+    return redirect(url_for('task.tasks'))
