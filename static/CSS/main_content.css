@@ -1,3 +1,111 @@
+/* General body styling */
+body {
+  background-color: #f1f3f4;
+  font-family: "Roboto", sans-serif;
+  color: #202124;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #dadce0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1a73e8 !important;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: #1a73e8 !important;
+}
+
+/* Wrapper to handle sidebar and main content layout */
+.wrapper {
+  display: flex;
+  flex: 1;
+  margin-top: 60px; /* Height of navbar */
+}
+
+/* Sidebar styling */
+#sidebar {
+  width: 20%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+#sidebar .nav-link {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+#sidebar .nav-link:hover {
+  background-color: #ddd;
+  border-radius: 0.5rem;
+}
+
+#sidebar.collapsed {
+  transform: translateX(-100%);
+}
+
+.create-task-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: #1a73e8;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.create-task-btn:hover {
+  background-color: #185abc;
+}
+
+.create-task-btn strong {
+  margin-right: 0.5rem;
+}
+
+.logout-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: #d93025;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c5221f;
+}
+
+.logout-btn span {
+  margin-left: 0.5rem;
+}
+
 /* Main content styling */
 #main-content {
   flex: 1;
@@ -90,4 +198,56 @@
 .alert {
   font-size: 1.2rem;
   border-radius: 1rem;
+}
+
+/* Priority tag styling */
+.priority-low {
+  background-color: #229c55;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.priority-normal {
+  background-color: #e9d669;
+  color: black;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.priority-high {
+  background-color: #aa0b0b;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 1000;
+    width: 75%;
+    height: 100%;
+  }
+
+  #sidebar.show {
+    transform: translateX(0);
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  #main-content {
+    margin-left: 0;
+  }
 }
