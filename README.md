@@ -1,3 +1,5 @@
+![Task Manager 2](https://github.com/Anastasios3/Task-Managment-App-Mk-I--lightweight/assets/117446378/2f9f4d51-eb27-4970-a763-71df608505ee)
+
 # Task Manager Application
 
 ## Overview
@@ -6,11 +8,17 @@ The Task Manager Application is a comprehensive tool designed to help full stack
 
 ## Features
 
+![Task Manager 1](https://github.com/Anastasios3/Task-Managment-App-Mk-I--lightweight/assets/117446378/e003b65c-84f9-4858-b12c-d7db2638fc7f)
+
+
 ### User Authentication
 
 - **Registration**: Users can create an account by providing an email and password.
 - **Login**: Registered users can log in using their email and password.
 - **Logout**: Users can securely log out of their account.
+  
+![Task Manager 3](https://github.com/Anastasios3/Task-Managment-App-Mk-I--lightweight/assets/117446378/5f9ffb3f-aab5-4f0d-a547-d46cada06e2c)
+
 
 ### Task Management
 
@@ -35,6 +43,10 @@ The sidebar provides easy navigation and quick access to task creation and filte
 - **Priority Filters**: Buttons to filter tasks by priority (Low, Normal, High).
 - **Completion Filters**: Buttons to filter tasks by their completion status (Active, Completed).
 - **Logout Button**: A button to log out of the application.
+
+  
+![Task Manager 5](https://github.com/Anastasios3/Task-Managment-App-Mk-I--lightweight/assets/117446378/f00c82e8-07da-4cec-b06f-13b2a69a245f)
+
 
 ### Footer
 
