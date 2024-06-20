@@ -11,7 +11,6 @@ body {
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #dadce0;
-  margin-bottom: 20px;
 }
 
 .navbar-brand {
@@ -25,18 +24,37 @@ body {
   color: #1a73e8 !important;
 }
 
-/* Container and row styling */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Sidebar styling */
+#sidebar {
+  min-height: 100vh;
+  background-color: #f8f9fa;
 }
 
-.row {
-  margin-bottom: 20px;
+#sidebar .nav-link {
+  font-size: 1.1em;
+  color: #333;
+}
+
+#sidebar .nav-link:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+/* Main content styling */
+.container-fluid {
+  padding-top: 20px;
+}
+
+/* Footer styling */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #dadce0;
+  text-align: center;
 }
 
 /* Form styling */

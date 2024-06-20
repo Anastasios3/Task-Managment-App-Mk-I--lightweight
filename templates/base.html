@@ -51,15 +51,124 @@
         </ul>
       </div>
     </nav>
-    <div class="container mt-4">
-      {% with messages = get_flashed_messages() %} {% if messages %}
-      <div class="alert alert-info" role="alert">
-        {% for message in messages %}
-        <p>{{ message }}</p>
-        {% endfor %}
+    <div class="container-fluid">
+      <div class="row">
+        {% if current_user.is_authenticated %}
+        <nav
+          id="sidebar"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="#"
+                  data-toggle="modal"
+                  data-target="#createTaskModal"
+                >
+                  Create Task
+                </a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ url_for('tasks', priority='Low') }}"
+                  >Low Priority</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ url_for('tasks', priority='Normal') }}"
+                  >Medium Priority</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{{ url_for('tasks', priority='High') }}"
+                  >High Priority</a
+                >
+              </li>
+              <li class="nav-item mt-auto">
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        {% endif %}
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Dashboard</h1>
+          </div>
+          {% block content %}{% endblock %}
+        </main>
       </div>
-      {% endif %} {% endwith %} {% block content %}{% endblock %}
     </div>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+
+    {% if form.__class__.__name__ == 'TaskForm' %}
+    <!-- Create Task Modal -->
+    <div
+      class="modal fade"
+      id="createTaskModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="createTaskModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createTaskModalLabel">Create Task</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="POST" action="{{ url_for('tasks') }}">
+            {{ form.hidden_tag() }}
+            <div class="modal-body">
+              <div class="form-group">
+                {{ form.title.label(class="form-label") }} {{
+                form.title(class="form-control") }}
+              </div>
+              <div class="form-group">
+                {{ form.description.label(class="form-label") }} {{
+                form.description(class="form-control") }}
+              </div>
+              <div class="form-group">
+                {{ form.priority.label(class="form-label") }} {{
+                form.priority(class="form-control") }}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Create Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
