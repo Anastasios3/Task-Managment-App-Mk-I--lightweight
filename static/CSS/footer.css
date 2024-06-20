@@ -1,0 +1,29 @@
+/* Footer styling */
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #dadce0;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  #sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 1000;
+    width: 100%;
+  }
+
+  #main-content {
+    margin-left: 0;
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+}

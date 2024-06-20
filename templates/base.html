@@ -10,7 +10,23 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/navbar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sidebar.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/main_content.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/footer.css') }}"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -18,92 +34,10 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="{{ url_for('main.home') }}">
-        <img
-          src="{{ url_for('static', filename='logo.svg') }}"
-          alt="Task Manager Logo"
-          width="30"
-          height="30"
-        />
-        Task Manager
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          {% if current_user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('task.tasks') }}">Tasks</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('auth.register') }}"
-              >Register</a
-            >
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
+    {% include 'navbar.html' %}
     <div class="wrapper">
-      {% if current_user.is_authenticated %}
-      <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
-        <div class="sidebar-sticky pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item text-center mb-3">
-              <a
-                class="nav-link add-task-btn"
-                href="#"
-                data-toggle="modal"
-                data-target="#createTaskModal"
-              >
-                <span class="plus-sign">+</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='Low') }}"
-                >Low Priority</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='Normal') }}"
-                >Medium Priority</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{{ url_for('task.tasks', priority='High') }}"
-                >High Priority</a
-              >
-            </li>
-            <li class="nav-item mt-auto">
-              <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-      {% endif %}
+      {% if current_user.is_authenticated %} {% include 'sidebar.html' %} {%
+      endif %}
       <main
         id="main-content"
         role="main"
@@ -117,13 +51,7 @@
         {% block content %}{% endblock %}
       </main>
     </div>
-    <footer class="footer mt-auto py-3 bg-light">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-      </div>
-    </footer>
-
-    {% if form.__class__.__name__ == 'TaskForm' %}
+    {% include 'footer.html' %} {% if form.__class__.__name__ == 'TaskForm' %}
     <!-- Create Task Modal -->
     <div
       class="modal fade"
@@ -181,6 +109,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   </body>
 </html>

@@ -60,28 +60,50 @@ body {
   transform: translateX(-100%);
 }
 
-.add-task-btn {
+.create-task-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: #1a73e8;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  background-color: #1a73e85e;
-  color: white;
-  font-size: 2rem;
-  text-align: center;
   transition: background-color 0.3s ease;
-  margin: 0 auto;
 }
 
-.add-task-btn:hover {
+.create-task-btn:hover {
   background-color: #185abc;
 }
 
-.plus-sign {
-  margin: 0;
-  line-height: 0; /* Ensure line height does not affect centering */
+.create-task-btn strong {
+  margin-right: 0.5rem;
+}
+
+.logout-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 100%;
+  background-color: #d93025;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c5221f;
+}
+
+.logout-btn span {
+  margin-left: 0.5rem;
 }
 
 /* Main content styling */

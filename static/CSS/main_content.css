@@ -1,0 +1,86 @@
+/* Main content styling */
+#main-content {
+  flex: 1;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+#main-content.collapsed {
+  margin-left: 0;
+}
+
+.container-fluid {
+  padding-top: 1rem;
+}
+
+/* Form styling */
+.form-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.form-control {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #dadce0;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #185abc;
+}
+
+.btn-warning {
+  background-color: #fbbc04;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e8a200;
+}
+
+.btn-danger {
+  background-color: #d93025;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c5221f;
+}
+
+/* Task list styling */
+.list-group-item {
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: 1px solid #dadce0;
+  background-color: #fff;
+}
+
+.list-group-item strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.d-flex > div {
+  margin-right: 1rem;
+}
+
+.alert {
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}

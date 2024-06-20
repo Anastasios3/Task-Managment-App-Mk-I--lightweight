@@ -1,0 +1,17 @@
+/* General body styling */
+body {
+  background-color: #f1f3f4;
+  font-family: "Roboto", sans-serif;
+  color: #202124;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  margin-top: 60px; /* Height of navbar */
+}
