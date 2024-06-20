@@ -1,0 +1,112 @@
+/* General body styling */
+body {
+  background-color: #f1f3f4;
+  font-family: "Roboto", sans-serif;
+  color: #202124;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid #dadce0;
+  margin-bottom: 20px;
+}
+
+.navbar-brand {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #1a73e8 !important;
+}
+
+.nav-link {
+  font-size: 1.2em;
+  color: #1a73e8 !important;
+}
+
+/* Container and row styling */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.form-label {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.form-control {
+  font-size: 1.2em;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #dadce0;
+}
+
+.btn {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #185abc;
+}
+
+.btn-warning {
+  background-color: #fbbc04;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e8a200;
+}
+
+.btn-danger {
+  background-color: #d93025;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c5221f;
+}
+
+/* Task list styling */
+.list-group-item {
+  font-size: 1.2em;
+  padding: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #dadce0;
+  background-color: #fff;
+}
+
+.list-group-item strong {
+  display: block;
+  font-size: 1.4em;
+  margin-bottom: 5px;
+}
+
+.d-flex > div {
+  margin-right: 10px;
+}
+
+.alert {
+  font-size: 1.2em;
+  border-radius: 10px;
+}
