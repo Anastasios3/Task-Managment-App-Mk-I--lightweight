@@ -10,23 +10,23 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/base.css') }}"
+      href="{{ url_for('static', filename='CSS/base.css') }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/navbar.css') }}"
+      href="{{ url_for('static', filename='CSS/navbar.css') }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/sidebar.css') }}"
+      href="{{ url_for('static', filename='CSS/sidebar.css') }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/main_content.css') }}"
+      href="{{ url_for('static', filename='CSS/main_content.css') }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/footer.css') }}"
+      href="{{ url_for('static', filename='CSS/footer.css') }}"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -35,95 +35,37 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('task.tasks') }}"
+        >Task Manager</a
+      >
       <button
         class="navbar-toggler"
         type="button"
+        data-toggle="collapse"
+        data-target="#sidebar"
+        aria-controls="sidebar"
+        aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('task.tasks') }}">
-        <img
-          src="{{ url_for('static', filename='logo.svg') }}"
-          alt="Task Manager Logo"
-          width="30"
-          height="30"
-        />
-        Task Manager
-      </a>
     </nav>
-    <div class="wrapper d-flex">
-      {% if current_user.is_authenticated %}
-      <div id="sidebar" class="bg-light">{% include 'sidebar.html' %}</div>
-      {% endif %}
-      <main id="main-content" class="flex-grow-1">
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
-        >
-          <h1 class="h2">Dashboard</h1>
-        </div>
-        {% block content %}{% endblock %} {% include 'footer.html' %}
-      </main>
-    </div>
-
-    {% if form.__class__.__name__ == 'TaskForm' %}
-    <!-- Create Task Modal -->
-    <div
-      class="modal fade"
-      id="createTaskModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="createTaskModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="createTaskModalLabel">Create Task</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <form method="POST" action="{{ url_for('task.tasks') }}">
-            {{ form.hidden_tag() }}
-            <div class="modal-body">
-              <div class="form-group">
-                {{ form.title.label(class="form-label") }} {{
-                form.title(class="form-control") }}
-              </div>
-              <div class="form-group">
-                {{ form.description.label(class="form-label") }} {{
-                form.description(class="form-control") }}
-              </div>
-              <div class="form-group">
-                {{ form.priority.label(class="form-label") }} {{
-                form.priority(class="form-control") }}
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="submit" class="btn btn-primary">Create Task</button>
-            </div>
-          </form>
-        </div>
+    <div class="wrapper">
+      {% include 'sidebar.html' %}
+      <div id="main-content" class="container-fluid">
+        {% block content %}{% endblock %}
       </div>
     </div>
-    {% endif %}
-
+    {% include 'footer.html' %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+      $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $("#sidebar").toggleClass("show");
+        });
+      });
+    </script>
   </body>
 </html>

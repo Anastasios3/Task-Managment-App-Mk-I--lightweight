@@ -12,23 +12,13 @@ def tasks():
     form = TaskForm()
     sort_by = request.args.get('sort_by', 'date')
     order = request.args.get('order', 'asc')
-    priority = request.args.get('priority', None)
 
     query = Task.query.filter_by(user_id=current_user.id)
 
-    if priority:
-        query = query.filter_by(priority=priority)
-
     if sort_by == 'priority':
-        if order == 'asc':
-            query = query.order_by(Task.priority.asc())
-        else:
-            query = query.order_by(Task.priority.desc())
+        query = query.order_by(Task.priority.asc() if order == 'asc' else Task.priority.desc())
     else:  # Default is sorting by date
-        if order == 'asc':
-            query = query.order_by(Task.id.asc())
-        else:
-            query = query.order_by(Task.id.desc())
+        query = query.order_by(Task.id.asc() if order == 'asc' else Task.id.desc())
 
     tasks = query.all()
 
@@ -49,6 +39,31 @@ def tasks():
         return redirect(url_for('task.tasks'))
 
     return render_template('tasks.html', tasks=tasks, form=form)
+
+@task_routes.route('/tasks/active')
+@login_required
+def active_tasks():
+    tasks = Task.query.filter_by(user_id=current_user.id, completed=False).all()
+    return render_template('tasks.html', tasks=tasks, title="Active Tasks")
+
+@task_routes.route('/tasks/completed')
+@login_required
+def completed_tasks():
+    tasks = Task.query.filter_by(user_id=current_user.id, completed=True).all()
+    return render_template('tasks.html', tasks=tasks, title="Completed Tasks")
+
+@task_routes.route('/tasks/all')
+@login_required
+def all_tasks():
+    active_tasks = Task.query.filter_by(user_id=current_user.id, completed=False).all()
+    completed_tasks = Task.query.filter_by(user_id=current_user.id, completed=True).all()
+    return render_template('tasks.html', active_tasks=active_tasks, completed_tasks=completed_tasks, title="All Tasks")
+
+@task_routes.route('/tasks/priority/<priority>')
+@login_required
+def priority_tasks(priority):
+    tasks = Task.query.filter_by(user_id=current_user.id, priority=priority).all()
+    return render_template('tasks.html', tasks=tasks, title=f"{priority.capitalize()} Priority Tasks")
 
 @task_routes.route('/update_task/<int:task_id>', methods=['GET', 'POST'])
 @login_required

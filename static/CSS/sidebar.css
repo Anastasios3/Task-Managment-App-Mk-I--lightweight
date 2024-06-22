@@ -1,79 +1,212 @@
-#sidebar {
-  height: 100vh;
-  position: fixed;
-  width: 20%;
-  background-color: #f8f9fa;
-  padding: 1rem;
+/* General styling */
+body {
+  font-family: "Roboto", sans-serif;
+  color: #202124;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  background-color: #f1f3f4;
+}
+
+/* Navbar styling */
+.navbar {
+  background-color: #fff;
+  border-bottom: 0.1rem solid #dadce0;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1a73e8 !important;
+}
+
+/* Wrapper to handle sidebar and main content layout */
+.wrapper {
+  display: flex;
+  flex: 1;
+  margin-top: 4rem; /* Height of navbar */
+}
+
+/* Sidebar styling */
+#sidebar {
+  width: 20%;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 2rem 1rem;
+  position: fixed;
+  top: 4rem; /* Height of navbar */
+  left: 0;
   overflow-y: auto;
-  transition: transform 0.3s ease;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 #sidebar .nav-link {
   font-size: 1.1rem;
   color: #333;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #sidebar .nav-link:hover {
   background-color: #ddd;
-  border-radius: 0.5rem;
+  color: #1a73e8;
 }
 
 .create-task-btn {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  width: 100%;
   background-color: #1a73e8;
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
+  margin-bottom: 1rem;
 }
 
 .create-task-btn:hover {
   background-color: #185abc;
 }
 
-.create-task-btn strong {
-  margin-right: 0.5rem;
-}
-
 .logout-btn {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  width: 100%;
   background-color: #d93025;
   color: white;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease;
-  margin-bottom: 4rem;
+  margin-top: auto;
 }
 
 .logout-btn:hover {
   background-color: #c5221f;
 }
 
-.logout-btn span {
-  margin-left: 0.5rem;
+.pale-line {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1rem 0;
 }
 
+/* Main content styling */
+#main-content {
+  flex: 1;
+  padding: 2rem;
+  margin-left: 20%;
+  transition: margin-left 0.3s ease;
+}
+
+#main-content.collapsed {
+  margin-left: 0;
+}
+
+.container-fluid {
+  padding-top: 1rem;
+}
+
+/* Form styling */
+.form-label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.form-control {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #dadce0;
+}
+
+.btn {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #1a73e8;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #185abc;
+}
+
+.btn-warning {
+  background-color: #fbbc04;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e8a200;
+}
+
+.btn-danger {
+  background-color: #d93025;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c5221f;
+}
+
+/* Task list styling */
+.list-group-item {
+  font-size: 1.2rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border: 0.1rem solid #dadce0;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item strong {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.d-flex > div {
+  margin-right: 1rem;
+}
+
+.alert {
+  font-size: 1.2rem;
+  border-radius: 1rem;
+}
+
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
   #sidebar {
+    width: 100%;
+    height: 100vh;
     position: fixed;
     transform: translateX(-100%);
     z-index: 1000;
-    width: 75%;
-    height: 100%;
+    transition: transform 0.3s ease;
   }
 
   #sidebar.show {

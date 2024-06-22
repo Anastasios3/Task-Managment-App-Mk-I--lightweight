@@ -1,17 +1,68 @@
-/* General body styling */
-body {
-  background-color: #f1f3f4;
-  font-family: "Roboto", sans-serif;
-  color: #202124;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+/* Sidebar styling */
+#sidebar {
+  width: 20%;
   min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  position: fixed;
+  top: 60px; /* Height of navbar */
+  left: 0;
+  overflow-y: auto;
 }
 
-.wrapper {
+#sidebar .nav-link {
+  font-size: 1.1rem;
+  color: #333;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  display: block;
+  width: 100%;
+}
+
+#sidebar .nav-link:hover {
+  background-color: #ddd;
+  border-radius: 0.5rem;
+}
+
+.create-task-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #1a73e8;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   display: flex;
-  flex: 1;
-  margin-top: 60px; /* Height of navbar */
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.create-task-btn:hover {
+  background-color: #185abc;
+}
+
+.logout-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #d93025;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #c5221f;
+}
+
+.pale-line {
+  border: 0;
+  height: 1px;
+  background: #e0e0e0;
+  margin: 1rem 0;
 }
