@@ -1,3 +1,5 @@
+
+
 ![Task Manager 2](https://github.com/Anastasios3/Task-Managment-App-Mk-I--lightweight/assets/117446378/2f9f4d51-eb27-4970-a763-71df608505ee)
 
 # Task Manager Application
